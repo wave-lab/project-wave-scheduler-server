@@ -5,4 +5,7 @@ const router = express.Router({mergeParams: true})
 //schedule
 router.use('/', require('./controller/scheduler/scheduler_routes'));
 
+//health-check
+router.use('/health-check', require('./controller/health'));
+
 module.exports = router;
