@@ -3,9 +3,11 @@ var Schema = mongoose.Schema;
 
 var top10Schema = new Schema({
     top10Idx : String,
+    top10Category: String,
     top10Name : String,
-    checkTime : Date,
-    playlistIdx : String
+    playlistIdx : String,
+    top10Thumbnail: String,
+    checkTime : Date
 },{
     versionKey: false // You should be aware of the outcome after set to false
 });
