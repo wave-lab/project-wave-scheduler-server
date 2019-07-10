@@ -4,7 +4,7 @@ const schedule = require('node-schedule');
 const moment = require('moment', 'ddd DD MMM YYYY HH:mm:ss ZZ');
 const song = require('../../model/schema/song')
 //0 0 12 1/1 * ? *
-schedule.scheduleJob('*/10 * * * * *', async function () { //매일 정오
+schedule.scheduleJob('0 0 12 1/1 * ? *', async function () { //매일 정오
     console.log('심사곡 상태 판별 스케쥴러 실행');
     const allSongs = await song.find();
     for (var i = 0; i < allSongs.length; i++) {
