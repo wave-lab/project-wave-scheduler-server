@@ -1,4 +1,4 @@
-# project_wave_server
+# project_wave_scheduler_server
 
 * 2019 SOPT 24기 커버곡 플랫폼 'wave'
 * 프로젝트 기간 : 2019년 6월 29일 ~ 2019년 7월 12일]
