@@ -12,7 +12,7 @@ const genre = require('../../module/genre');
 const mood = require('../../module/mood');
 
 //1시간마다 해야할 일 : TOP10
-var everyHour = schedule.scheduleJob('0 * * * * *', async function() {
+var everyHour = schedule.scheduleJob('0 0 * * * *', async function() {
     console.log('스케줄러 실행');
 
     const genreArray = [genre.g1, genre.g2, genre.g3, genre.g4, genre.g5, genre.g6, genre.g7, genre.g8];
