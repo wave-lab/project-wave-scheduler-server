@@ -49,7 +49,7 @@ schedule.scheduleJob('0 0 0 1/1 * ? *', async function () { //매일 자정
                     if (songIdx == getUserRateScoreResult[k].songIdx && pointVerify != 0) { //평가한 노래 리스트에 평가대기곡 리스트의 노래가 있을 때
                         if (originSong.songStatus !== 0) { //유보상태가 아니면
                             let average = (parseFloat(originSong.rateScore / originSong.rateUserCount).toFixed(1));
-                            if (Math.abs(average - getUserRateScoreResult[k].ratePoint) <= 0.3) { // 평균 점수-내점수 절댓값 0.3 이하
+                            if (Math.abs(average - getUserRateScoreResult[k].ratePoint) <= 0.5) { // 평균 점수-내점수 절댓값 0.3 이하
                                 console.log(userIdx + '번 유저가' + songIdx + ' 번 노래를 적중!');
                                 await playlistModules.addSongToPlaylist(hitsPlaylistIdx, ratedSongList[j]); //적중곡 목록에 추가
                                 let newCount = (getAllUserDataResult[i].hitSongCount + 1);

@@ -40,7 +40,7 @@ var everyHour = schedule.scheduleJob('0 0 * * * *', async function() {
                     }
                 })
             }
-         }).sort({streamCount : -1}).limit(10);
+        }).sort({streamCount : -1}).limit(10);
     }
 
     const moodArray = [mood.m1, mood.m2, mood.m3, mood.m4, mood.m5, mood.m6, mood.m7, mood.m8];
