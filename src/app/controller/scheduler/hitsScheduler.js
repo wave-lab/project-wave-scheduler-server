@@ -7,7 +7,7 @@ const pool = require('../../module/pool');
 const song = require('../../model/schema/song');
 
 schedule.scheduleJob('0 0 0 1/1 * ? *', async function () { //매일 자정
-    console.log('적중곡 판별 스케쥴러 실행');
+    console.log('적중곡 판별 스케쥴러 실행, 시작 시간 : ' + moment().format('YYYY-MM-DD HH:mm:ss'));
     const getAllUserDataQuery = 'SELECT userIdx, hitSongCount, rateSongCount, totalPoint FROM user'
     const getUserRateScoreQuery = 'SELECT ratePoint, songIdx FROM rate_history WHERE userIdx = ?'
     const updateHitSongCountQuery = 'UPDATE user SET hitSongCount=? WHERE userIdx = ?'
@@ -32,7 +32,7 @@ schedule.scheduleJob('0 0 0 1/1 * ? *', async function () { //매일 자정
                     let songIdx = ratedSongList[j]._id;
                     let originSong = (await song.find({"_id" : songIdx}))[0];
                     if(originSong.songStatus == 0) {
-                        console.log('아직 유보임');
+                        console.log('유보 상태');
                         break;
                     }
                     for (var l = 0; l < getPointHistoryResult.length; l++) {
@@ -65,6 +65,7 @@ schedule.scheduleJob('0 0 0 1/1 * ? *', async function () { //매일 자정
 
         }
     }
+    console.log('적중곡 판별 스케쥴러 실행, 시작 시간 : ' + moment().format('YYYY-MM-DD HH:mm:ss'));
 })
 
 module.exports = router;
