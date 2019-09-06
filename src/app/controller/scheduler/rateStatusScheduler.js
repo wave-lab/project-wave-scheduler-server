@@ -8,10 +8,10 @@ schedule.scheduleJob('0 0 12 1/1 * ? *', async function () { //매일 정오
     console.log('심사곡 상태 판별 스케쥴러 실행');
     const allSongs = await song.find();
     for (var i = 0; i < allSongs.length; i++) {
-        if (allSongs[i].songStatus == 1) {
+        if (allSongs[i].songStatus != 0) {
             continue;
         }
-        else if (allSongs[i].songStatus == 0) {
+        else {
             const deleteTime = allSongs[i].deleteTime;
             const duration = moment().diff(deleteTime, 'seconds');
             if (duration > 0) { // 7일 지났을 때
@@ -49,10 +49,8 @@ schedule.scheduleJob('0 0 12 1/1 * ? *', async function () { //매일 정오
                 }
             }
         }
-        else {
-
-        }
     }
+    console.log('심사곡 상태 판별 스케쥴러 끝 : ' + moment().format('YYYY-MM-DD HH:mm:ss'))
 })
 
 module.exports = router;
